@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.mongodb.doman.Post;
 import br.com.mongodb.doman.User;
 import br.com.mongodb.dto.UserDTO;
 import br.com.mongodb.service.UserService;
@@ -67,6 +68,14 @@ public class UserResource {
 		usr = userService.update(usr);
 		
 		return ResponseEntity.noContent().build();	
+	}
+	
+	@RequestMapping(value = "/{id}/posts" ,method = RequestMethod.GET)
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+		
+		User usr = userService.findById(id);
+		
+		return ResponseEntity.ok().body(usr.getPost());
 	}
 
 }
