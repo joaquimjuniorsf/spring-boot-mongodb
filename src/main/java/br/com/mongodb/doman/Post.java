@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import br.com.mongodb.dto.AuthorDTO;
+
 
 @Document("post")
 public class Post {
@@ -14,13 +16,13 @@ public class Post {
 	private LocalDate data;
 	private String title;
 	private String body;
-	private User author;
+	private AuthorDTO author;
 	
 	public Post() {
 
 	}
 
-	public Post(String id, LocalDate data, String title, String body,User author) {
+	public Post(String id, LocalDate data, String title, String body,AuthorDTO author) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -61,11 +63,11 @@ public class Post {
 		this.body = body;
 	}
 
-	public User getAuthor() {
+	public AuthorDTO getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(AuthorDTO author) {
 		this.author = author;
 	}
 
